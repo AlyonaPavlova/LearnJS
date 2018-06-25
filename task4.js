@@ -39,7 +39,7 @@ function catsGroupGenerate(n) {
     return catsArray;
 }
 
-var myCats = catsGroupGenerate(10);
+var myCats = catsGroupGenerate(15);
 
 function viewCatsList() {
 
@@ -74,22 +74,28 @@ function viewCatsOld(n) {
     myCats.sort(compareNumeric);
     var reverseCats = myCats.reverse();
 
-   for (var key in reverseCats) if (sortMyCats.length < n) {
+   for (var key in reverseCats) if (sortMyCats.length < n && reverseCats[key].gender === "male") {
        sortMyCats.push(objViewer(reverseCats[key]));
    }
 
    console.log(sortMyCats);
 }
 
-viewCatsOld(3);
+// viewCatsOld(10);
 
 // Array of young cats
 
-function viewCatsYoung() {
+function viewCatsYoung(n) {
 
-    for (catIndex = 0; catIndex < myCats.length; ++catIndex) if(myCats[catIndex].age <= 3 && myCats[catIndex].gender === "female") {
-        console.log(myCats[catIndex].name);
+    var myCatsYoung = [];
+
+    var sortMyCatsYoung = myCats.sort(compareNumeric);
+
+    for (var key in sortMyCatsYoung) if (myCatsYoung.length < n && sortMyCatsYoung[key].gender === "female") {
+        myCatsYoung.push(objViewer(sortMyCatsYoung[key]));
     }
+
+    console.log(myCatsYoung);
 }
 
-// viewCatsYoung();
+viewCatsYoung(5);
