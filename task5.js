@@ -39,7 +39,7 @@ function catsGroupGenerate(n) {
     return catsArray;
 }
 
-var myCats = catsGroupGenerate(15);
+var myCats = catsGroupGenerate(10);
 
 function viewCatsList() {
 
@@ -61,41 +61,23 @@ function viewCatsNames() {
 
 // viewCatsNames();
 
-// Array of oldest cats
+viewCatsNames();
 
-function compareNumeric(a, b) {
-    return a.age - b.age;
-}
+function nameStats(list) {
 
-function viewCatsOld(n) {
+    var catsName = {};
 
-    var sortMyCats = [];
+    for (catIndex = 0; catIndex < list.length; ++catIndex) {
 
-    myCats.sort(compareNumeric);
-    var reverseCats = myCats.reverse();
-
-   for (var key in reverseCats) if (sortMyCats.length < n && reverseCats[key].gender === "male") {
-       sortMyCats.push(objViewer(reverseCats[key]));
-   }
-
-   console.log(sortMyCats);
-}
-
-// viewCatsOld(10);
-
-// Array of young cats
-
-function viewCatsYoung(n) {
-
-    var myCatsYoung = [];
-
-    var sortMyCatsYoung = myCats.sort(compareNumeric);
-
-    for (var key in sortMyCatsYoung) if (myCatsYoung.length < n && sortMyCatsYoung[key].gender === "female") {
-        myCatsYoung.push(objViewer(sortMyCatsYoung[key]));
+        if (list[catIndex].name in catsName) {
+            catsName[list[catIndex]["name"]] += 1;
+        }
+        else {
+            catsName[list[catIndex]["name"]] = 1;
+        }
     }
 
-    console.log(myCatsYoung);
+    console.log(catsName);
 }
 
-viewCatsYoung(5);
+nameStats(myCats);
