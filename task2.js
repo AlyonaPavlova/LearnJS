@@ -25,5 +25,5 @@ function catFactory(name, age, gender, legsCount, tailLength) {
 var newCat = catFactory(names, ages, genders, legsCounts, tailLengths);
 
 for(var prop in newCat) {
-    alert(prop+':'+newCat[prop]);
+    console.log(prop+':'+newCat[prop]);
 }
