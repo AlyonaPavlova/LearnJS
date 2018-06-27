@@ -59,7 +59,7 @@ function viewCatsNames() {
     }
 }
 
-// viewCatsNames();
+viewCatsNames();
 
 // Array of oldest cats
 
