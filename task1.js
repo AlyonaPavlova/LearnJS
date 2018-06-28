@@ -1,5 +1,5 @@
 const { pick } = require("./functions");
 
-let list = ["apple", "banana", "strawberry", "strawberries"];
+var arr = ["apple", "banana", "strawberry", "strawberries"];
 
-console.log(pick(list));
+console.log(pick(arr));

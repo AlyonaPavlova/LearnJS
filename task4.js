@@ -60,3 +60,11 @@ function viewCatsYoung(n) {
 }
 
 viewCatsYoung(5);
+
+module.exports = {
+
+    viewCatsNames,
+    viewCatsOld,
+    viewCatsYoung
+
+};
