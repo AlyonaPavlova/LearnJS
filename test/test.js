@@ -6,6 +6,7 @@ const { catsGroupGenerate } = require("../functions");
 const { viewCatsNames } = require("../task4");
 const { viewCatsOld } = require("../task4");
 const { viewCatsYoung } = require("../task4");
+const { nameStats } = require("../task5");
 
 describe('Array', function() {
 
@@ -29,21 +30,44 @@ describe('Array', function() {
     });
 });
 
-describe('Output cats functions ', function() {
+describe('Output cats functions', function() {
 
     it("should return just cat's name", function() {
 
-        assert.include(viewCatsNames(), []);
+        assert.include(viewCatsNames(), "Max" || "Bella" || "Smokey" || "Oscar");
 
     });
 
+    it('should return array of male cats', function () {
 
-    it('should return array of oldest cats', function () {
+        viewCatsOld(10).forEach(function (item) {
 
-        // assert.nestedPropertyVal(viewCatsOld(5), 'gender', 'male')
-        // assert.deepInclude(viewCatsOld(5), {gender : "male"});
-        assert.includeDeepMembers(viewCatsOld(1), [{gender : "male"}]);
+                assert(item.gender === "male");
+        });
+    });
 
-    })
+    it('should return array of female cats', function () {
 
+        viewCatsYoung(10).forEach(function (item) {
+
+                assert(item.gender === "female");
+        });
+    });
+});
+
+describe("Object with key:cat's name and value:number of times", function () {
+
+    it('should return not empty object', function () {
+
+        var myCats = catsGroupGenerate(10);
+
+        assert.notEmpty(nameStats(myCats));
+    });
+
+    it('should return not empty object', function () {
+
+        var myCats = catsGroupGenerate(10);
+
+        assert.notEmpty(nameStats(myCats));
+    });
 });

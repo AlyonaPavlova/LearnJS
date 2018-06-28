@@ -34,10 +34,10 @@ function viewCatsOld(n) {
 
     listCatsOld.length = n;
 
-    console.log(listCatsOld);
+    return listCatsOld;
 }
 
-viewCatsOld(5);
+console.log(viewCatsOld(5));
 
 // Return array of young female cats
 
@@ -56,10 +56,10 @@ function viewCatsYoung(n) {
 
     listCatsYoung.length = n;
 
-    console.log(listCatsYoung);
+    return listCatsYoung;
 }
 
-viewCatsYoung(5);
+console.log(viewCatsYoung(5));
 
 module.exports = {
 

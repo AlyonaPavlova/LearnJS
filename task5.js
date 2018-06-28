@@ -16,7 +16,12 @@ function nameStats(list) {
         }
     });
 
-    console.log(catsName);
+    return catsName;
 }
 
-nameStats(myCats);
+console.log(nameStats(myCats));
+
+module.exports = {
+
+    nameStats
+};
