@@ -1,10 +1,16 @@
 const { assert } = require('chai');
 
+import {pick} from "../task1";
+import {catFactory} from "../task2";
+import {catsGroupGenerate} from "../task3";
+import {viewCatsNames} from "../task4";
+import {viewCatsOld} from "../task4";
+import {viewCatsYoung} from "../task4";
+
+
 describe('Array', function() {
 
     it('should return random value of array', function(){
-
-        var list = ["apple", "banana", "strawberry", "strawberries"];
 
         assert(list[Math.floor(Math.random() * list.length)] === "apple" || "banana" || "strawberry" || "strawberries");
     });
@@ -70,7 +76,6 @@ describe('Array', function() {
     });
 });
 
-
 describe('Output cats functions ', function() {
 
     it("should return cat's name", function() {
@@ -119,12 +124,74 @@ describe('Output cats functions ', function() {
             }
         }
 
-        var a = [viewCatsNames()];
+        var a = viewCatsNames();
 
-        // assert.equal(a["name"], true);
-        assert.include(a, "Max");
+        assert.include(a, "");
 
     });
 
+
+    it('should return array of oldest cats', function () {
+
+        var names = ["Max","Smokey", "Oliver", "Baddie", "Charlie", "Oscar", "Lucie", "Mollie", "Bella", "Sophie", "Lily", "Maggie"];
+        var ages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var genders = ["female", "male"];
+        var legsCounts = [1, 2, 3, 4];
+        var tailLengths = [10, 20, 30];
+
+        function catFactory(name, age, gender, legsCount, tailLength) {
+
+            var nameRand = name[Math.floor(Math.random() * name.length)];
+            var ageRand = age[Math.floor(Math.random() * age.length)];
+            var genderRand = gender[Math.floor(Math.random() * gender.length)];
+            var legsCountRand = legsCount[Math.floor(Math.random() * legsCount.length)];
+            var tailLengthRand = tailLength[Math.floor(Math.random() * tailLength.length)];
+
+            var obj = {
+                name: nameRand,
+                age: ageRand,
+                gender: genderRand,
+                legsCount: legsCountRand,
+                tailLength: tailLengthRand
+            };
+            return obj;
+        }
+
+        function catsGroupGenerate(n) {
+            var catsArray = [];
+            while(catsArray.length < n) {
+                var myCat = catFactory(names, ages, genders, legsCounts, tailLengths);
+                catsArray.push (myCat);
+            }
+            return catsArray;
+        }
+
+        var myCats = catsGroupGenerate(15);
+
+        function compareNumeric(a, b) {
+            return a.age - b.age;
+        }
+
+        function viewCatsOld(n) {
+
+            var sortMyCats = [];
+
+            myCats.sort(compareNumeric);
+            var reverseCats = myCats.reverse();
+
+            for (var key in reverseCats) if (sortMyCats.length < n && reverseCats[key].gender === "male") {
+                sortMyCats.push(reverseCats[key]);
+            }
+
+            return sortMyCats;
+        }
+
+        // var b = viewCatsOld(5);
+
+        // assert.nestedPropertyVal(viewCatsOld(5), 'gender', 'male')
+        // assert.deepInclude(viewCatsOld(5), {gender : "male"});
+        assert.includeDeepMembers(viewCatsOld(1), [{gender : "male"}]);
+
+    })
 
 });

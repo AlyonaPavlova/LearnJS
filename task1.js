@@ -1,7 +1,5 @@
-var list = ["apple", "banana", "strawberry", "strawberries"];
+const { pick } = require("./functions");
 
-function pick(list) {
-    return list[Math.floor(Math.random() * list.length)];
-}
+let list = ["apple", "banana", "strawberry", "strawberries"];
 
-alert(pick(list));
+console.log(pick(list));
