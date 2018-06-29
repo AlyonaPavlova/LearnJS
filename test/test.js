@@ -103,3 +103,13 @@ describe('Defaults catFactory', function () {
 
     })
 });
+
+describe('New parameter in catFactory function', function () {
+
+    it('should return catFactory with two parameters', function () {
+
+        var loudnessValue = catFactoryDef({name: "Mr. Bond"}, 0);
+
+        assert.include(loudnessValue.loudness, loudnessValue);
+    });
+});
