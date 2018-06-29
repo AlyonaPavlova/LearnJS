@@ -3,10 +3,10 @@ const { assert } = require('chai');
 const { pick } = require("../functions");
 const { catFactory } = require("../functions");
 const { catsGroupGenerate } = require("../functions");
-const { viewCatsNames } = require("../task4");
 const { viewCatsOld } = require("../task4");
 const { viewCatsYoung } = require("../task4");
 const { nameStats } = require("../task5");
+const { catFactoryDef } = require("../task6");
 
 describe('Array', function() {
 
@@ -31,12 +31,6 @@ describe('Array', function() {
 });
 
 describe('Output cats functions', function() {
-
-    it("should return just cat's name", function() {
-
-        assert.include(viewCatsNames(), "Max" || "Bella" || "Smokey" || "Oscar");
-
-    });
 
     it('should return array of male cats', function () {
 
@@ -64,10 +58,48 @@ describe("Object with key:cat's name and value:number of times", function () {
         assert.notEmpty(nameStats(myCats));
     });
 
-    it('should return not empty object', function () {
+    it('should return object {Max: 4, Mollie: 1}', function () {
 
-        var myCats = catsGroupGenerate(10);
+        var myCats = [
 
-        assert.notEmpty(nameStats(myCats));
+            { name: 'Max',
+            age: 9,
+            gender: 'female',
+            legsCount: 4,
+            tailLength: 20 },
+            { name: 'Max',
+                age: 9,
+                gender: 'male',
+                legsCount: 3,
+                tailLength: 10 },
+            { name: 'Max',
+                age: 9,
+                gender: 'female',
+                legsCount: 2,
+                tailLength: 30 },
+            { name: 'Max',
+                age: 6,
+                gender: 'male',
+                legsCount: 3,
+                tailLength: 30 },
+            { name: 'Mollie',
+                age: 2,
+                gender: 'female',
+                legsCount: 4,
+                tailLength: 10 } ]
+        ;
+
+        assert.deepEqual({Max: 4, Mollie: 1}, nameStats(myCats));
     });
+});
+
+describe('Defaults catFactory', function () {
+
+    it('should return object with random values', function () {
+
+        var notDefaults = catFactoryDef();
+
+        assert.isNotEmpty(notDefaults);
+
+    })
 });
