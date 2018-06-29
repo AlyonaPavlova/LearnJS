@@ -12,6 +12,7 @@ function catFactoryDef(defaults, loudness) {
     };
     return obj;
 }
+
 function catsGroupGenerate(n, defaults) {
 
     var catsArray = [];

@@ -6,7 +6,7 @@ const { catsGroupGenerate } = require("../functions");
 const { viewCatsOld } = require("../task4");
 const { viewCatsYoung } = require("../task4");
 const { nameStats } = require("../task5");
-const { catFactoryDef } = require("../task6");
+const { catFactoryDef } = require("../task7");
 
 describe('Array', function() {
 
@@ -108,6 +108,6 @@ describe('New parameter in catFactory function', function () {
 
     it('should return catFactory with two parameters', function () {
 
-        assert(catFactoryDef({name: "Mr. Bond"}, "quiet").loudnessCat = "quiet");
+        assert.equal("quiet", catFactoryDef({name: "Mr. Bond"}, "quiet").loudnessCat);
     });
 });
