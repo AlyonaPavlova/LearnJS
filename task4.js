@@ -10,9 +10,9 @@ console.log(myCats);
 
 function viewCatsNames() {
 
-    myCats.map(function (catIndex) {
-        console.log(catIndex.name);
-    });
+  myCats.map(function (catIndex) {
+    console.log(catIndex.name);
+  });
 }
 
 viewCatsNames();
@@ -20,21 +20,21 @@ viewCatsNames();
 // Return array of oldest male cats
 
 function compareNumericReverse(a, b) {
-    return b.age - a.age;
+  return b.age - a.age;
 }
 
 function viewCatsOld(n) {
 
-    var reverseCats = myCats.sort(compareNumericReverse);
+  var reverseCats = myCats.sort(compareNumericReverse);
 
-    let listCatsOld = reverseCats.filter(function (catIndex) {
+  let listCatsOld = reverseCats.filter(function (catIndex) {
 
-        return catIndex.gender === "male";
-    });
+    return catIndex.gender === "male";
+  });
 
-    listCatsOld.length = n;
+  listCatsOld.length = n;
 
-    return listCatsOld;
+  return listCatsOld;
 }
 
 console.log(viewCatsOld(5));
@@ -42,28 +42,28 @@ console.log(viewCatsOld(5));
 // Return array of young female cats
 
 function compareNumeric(a, b) {
-    return a.age - b.age;
+  return a.age - b.age;
 }
 
 function viewCatsYoung(n) {
 
-    var sortCats = myCats.sort(compareNumeric);
+  var sortCats = myCats.sort(compareNumeric);
 
-    let listCatsYoung = sortCats.filter(function (catIndex) {
+  let listCatsYoung = sortCats.filter(function (catIndex) {
 
-        return catIndex.gender === "female";
-    });
+    return catIndex.gender === "female";
+  });
 
-    listCatsYoung.length = n;
+  listCatsYoung.length = n;
 
-    return listCatsYoung;
+  return listCatsYoung;
 }
 
 console.log(viewCatsYoung(5));
 
 module.exports = {
 
-    viewCatsOld,
-    viewCatsYoung
+  viewCatsOld,
+  viewCatsYoung
 
 };

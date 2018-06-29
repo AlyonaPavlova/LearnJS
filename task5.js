@@ -4,24 +4,24 @@ var myCats = catsGroupGenerate(10);
 
 function nameStats(list) {
 
-    var catsName = {};
+  var catsName = {};
 
-    list.forEach( function (item) {
+  list.forEach( function (item) {
 
-        if (item.name in catsName) {
-            catsName[item.name] += 1;
-        }
-        else {
-            catsName[item.name] = 1;
-        }
-    });
+    if (item.name in catsName) {
+      catsName[item.name] += 1;
+    }
+    else {
+      catsName[item.name] = 1;
+    }
+  });
 
-    return catsName;
+  return catsName;
 }
 
 console.log(nameStats(myCats));
 
 module.exports = {
 
-    nameStats
+  nameStats
 };

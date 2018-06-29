@@ -1,4 +1,5 @@
-const { assert } = require('chai');
+const { assert } = require("chai");
+const { describe, it } = require("../node_modules/mocha");
 
 const { pick } = require("../functions");
 const { catFactory } = require("../functions");
@@ -8,98 +9,122 @@ const { viewCatsYoung } = require("../task4");
 const { nameStats } = require("../task5");
 const { catFactoryDef } = require("../task6");
 
-describe('Array', function() {
+describe("Array", function() {
 
-    it('should return random value of array', function(){
+  it("should return random value of array", function(){
 
-        var arr = ["apple", "banana", "strawberry", "strawberries"];
+    var arr = ["apple", "banana", "strawberry", "strawberries"];
 
-        assert(pick(arr) === "apple" || "banana" || "strawberry" || "strawberries");
-    });
+    assert.isNotEmpty(pick(arr));
+  });
 
-    it('should return cat with random values', function(){
+  it("should return cat with random value name", function(){
 
-        assert.property(catFactory(),  "name" && "age" && "gender" && "legsCount" && "tailLength");
+    assert.property(catFactory(), "name");
 
-    });
+  });
 
-    it('should return group cats (n) with random values', function () {
+  it("should return cat with random value age", function(){
 
-        assert(catsGroupGenerate(5).length === 5);
+    assert.property(catFactory(), "age");
 
-    });
+  });
+
+  it("should return cat with random value gender", function(){
+
+    assert.property(catFactory(), "gender");
+
+  });
+
+  it("should return cat with random value legsCount", function(){
+
+    assert.property(catFactory(), "legsCount");
+
+  });
+
+  it("should return cat with random value tailLength", function(){
+
+    assert.property(catFactory(), "tailLength");
+
+  });
+
+  it("should return group cats (n) with random values", function () {
+
+    assert(catsGroupGenerate(5).length === 5);
+
+  });
 });
 
-describe('Output cats functions', function() {
+describe("Output cats functions", function() {
 
-    it('should return array of male cats', function () {
+  it("should return array of male cats", function () {
 
-        viewCatsOld(10).forEach(function (item) {
+    viewCatsOld(10).forEach(function (item) {
 
-                assert(item.gender === "male");
-        });
+      assert(item.gender === "male");
     });
+  });
 
-    it('should return array of female cats', function () {
+  it("should return array of female cats", function () {
 
-        viewCatsYoung(10).forEach(function (item) {
+    viewCatsYoung(10).forEach(function (item) {
 
-                assert(item.gender === "female");
-        });
+      assert(item.gender === "female");
     });
+  });
 });
 
 describe("Object with key:cat's name and value:number of times", function () {
 
-    it('should return not empty object', function () {
+  it("should return not empty object", function () {
 
-        var myCats = catsGroupGenerate(10);
+    var myCats = catsGroupGenerate(10);
 
-        assert.notEmpty(nameStats(myCats));
-    });
+    assert.isNotEmpty(nameStats(myCats));
+  });
 
-    it('should return object {Max: 4, Mollie: 1}', function () {
+  it("should return object {Max: 4, Mollie: 1}", function () {
 
-        var myCats = [
+    var myCats = [
 
-            { name: 'Max',
-            age: 9,
-            gender: 'female',
-            legsCount: 4,
-            tailLength: 20 },
-            { name: 'Max',
-                age: 9,
-                gender: 'male',
-                legsCount: 3,
-                tailLength: 10 },
-            { name: 'Max',
-                age: 9,
-                gender: 'female',
-                legsCount: 2,
-                tailLength: 30 },
-            { name: 'Max',
-                age: 6,
-                gender: 'male',
-                legsCount: 3,
-                tailLength: 30 },
-            { name: 'Mollie',
-                age: 2,
-                gender: 'female',
-                legsCount: 4,
-                tailLength: 10 } ]
+      { name: "Max",
+        age: 9,
+        gender: "female",
+        legsCount: 4,
+        tailLength: 20 },
+      { name: "Max",
+        age: 9,
+        gender: "male",
+        legsCount: 3,
+        tailLength: 10 },
+      { name: "Max",
+        age: 9,
+        gender: "female",
+        legsCount: 2,
+        tailLength: 30 },
+      { name: "Max",
+        age: 6,
+        gender: "male",
+        legsCount: 3,
+        tailLength: 30 },
+      { name: "Mollie",
+        age: 2,
+        gender: "female",
+        legsCount: 4,
+        tailLength: 10 } ]
         ;
 
-        assert.deepEqual({Max: 4, Mollie: 1}, nameStats(myCats));
-    });
+    assert.deepEqual({Max: 4, Mollie: 1}, nameStats(myCats));
+  });
 });
 
-describe('Defaults catFactory', function () {
+describe("Defaults catFactory", function () {
 
-    it('should return object with random values', function () {
+  it("should return object with random values", function () {
 
-        var notDefaults = catFactoryDef();
+    var notDefaults = catFactoryDef();
 
-        assert.isNotEmpty(notDefaults);
+    assert.isNotEmpty(notDefaults);
 
-    })
+  });
 });
