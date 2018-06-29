@@ -63,7 +63,6 @@ console.log(viewCatsYoung(5));
 
 module.exports = {
 
-    viewCatsNames,
     viewCatsOld,
     viewCatsYoung
 
