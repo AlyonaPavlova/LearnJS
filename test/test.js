@@ -55,7 +55,7 @@ describe("Object with key:cat's name and value:number of times", function () {
 
         var myCats = catsGroupGenerate(10);
 
-        assert.notEmpty(nameStats(myCats));
+        assert.isNotEmpty(nameStats(myCats));
     });
 
     it('should return object {Max: 4, Mollie: 1}', function () {
@@ -108,8 +108,6 @@ describe('New parameter in catFactory function', function () {
 
     it('should return catFactory with two parameters', function () {
 
-        var loudnessValue = catFactoryDef({name: "Mr. Bond"}, 0);
-
-        assert.include(loudnessValue.loudness, loudnessValue);
+        assert(catFactoryDef({name: "Mr. Bond"}, "quiet").loudnessCat = "quiet");
     });
 });
